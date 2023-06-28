@@ -1,4 +1,4 @@
-var searchResult = document.querySelector("#movieResult");
+var searchResult = document.querySelector("#weather");
 document.addEventListener('DOMContentLoaded', function () {
   var elems = document.querySelectorAll('.dropdown-trigger');
   var instances = M.Dropdown.init(elems, {});
@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 var testData;
 var apiKey = 'de601ddd2d309aebbd9d11f32fbaa2bd';
-var ;
 var userInput;
 var weatherApiKey = {
   method: 'GET',
