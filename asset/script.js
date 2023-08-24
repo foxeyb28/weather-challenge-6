@@ -5,11 +5,11 @@ var currentWeather = document.querySelector("#currentWeather");
 var forecast = document.querySelector("#forecast");
 var wind = document.querySelector("#wind");
 var humidity = document.querySelector("#humidity");
-//document.addEventListener("DOMContentLoaded", function () {
-//   var elems = document.querySelectorAll(".dropdown-trigger");
-//   var instances = M.Dropdown.init(elems, {});
-//   localStorage.setItem("elems", instances);
-// });
+document.addEventListener("DOMContentLoaded", function () {
+  var elems = document.querySelectorAll(".dropdown-trigger");
+  var instances = M.Dropdown.init(elems, {});
+  localStorage.setItem("elems", instances);
+});
 
 var testData;
 var apiKey = "de601ddd2d309aebbd9d11f32fbaa2bd";
@@ -35,15 +35,15 @@ function getWeather(city) {
       h1.textContent = data.name;
       currentWeather.append(h1);
       var temp = document.createElement("p");
-      temp.textContent = data.main.temp;
+      temp.textContent = "Temp "+data.main.temp;
       currentWeather.append(temp);
 
       var wind = document.createElement("p");
-      wind.textContent = data.wind.speed;
+      wind.textContent = "Wind "+data.wind.speed;
       currentWeather.append(wind);
       
       var humidity = document.createElement("p");
-      humidity.textContent = data.main.humidity;
+      humidity.textContent = "Humidity "+data.main.humidity;
       currentWeather.append(humidity)
     });
 }
@@ -68,13 +68,13 @@ function getForecast(city) {
           h2.textContent = element.dt_txt.split(" ")[0]
        card.append(h2)
        var wind = document.createElement("p")
-       wind.textContent = element.wind.speed
+       wind.textContent = "Wind "+element.wind.speed
        card.append(wind)
        var temp = document.createElement("p")
-       temp.textContent = element.main.temp
+       temp.textContent = "Temp "+element.main.temp
        card.append(temp)
        var humidity = document.createElement("p")
-       humidity.textContent = element.main.humidity
+       humidity.textContent = "Humidity "+element.main.humidity
        card.append(humidity)
           forecast.append(card)
         }
