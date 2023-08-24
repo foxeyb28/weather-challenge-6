@@ -37,6 +37,14 @@ function getWeather(city) {
       var temp = document.createElement("p");
       temp.textContent = data.main.temp;
       currentWeather.append(temp);
+
+      var wind = document.createElement("p");
+      wind.textContent = data.wind.speed;
+      currentWeather.append(wind);
+      
+      var humidity = document.createElement("p");
+      humidity.textContent = data.main.humidity;
+      currentWeather.append(humidity)
     });
 }
 
@@ -50,12 +58,27 @@ function getForecast(city) {
     })
     .then((data) => {
       console.log(data);
+      for (let i = 0; i < data.list.length; i++) {
+        const element = data.list[i];
+        if (element.dt_txt.includes("12:00:00")) {
+          console.log(element);
+          var card = document.createElement("div")
+          card.setAttribute("class", "card")
           var h2 = document.createElement("h2")
-          h2.textContent = data.city.name
-       forecast.append(h2)
+          h2.textContent = element.dt_txt.split(" ")[0]
+       card.append(h2)
        var wind = document.createElement("p")
-       wind.textContent = data.list[0].wind.speed
-       forecast.append(wind)
+       wind.textContent = element.wind.speed
+       card.append(wind)
+       var temp = document.createElement("p")
+       temp.textContent = element.main.temp
+       card.append(temp)
+       var humidity = document.createElement("p")
+       humidity.textContent = element.main.humidity
+       card.append(humidity)
+          forecast.append(card)
+        }
+      }
     });
 }
 function getAllWeather(city) {
